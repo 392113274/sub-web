@@ -655,12 +655,12 @@ export default {
       const h = this.$createElement;
 
       this.$notify({
-        title: "隐私提示",
+        title: "GUO",
         type: "warning",
         message: h(
           "i",
           { style: "color: teal" },
-          "GUOJUN。"
+          "JUN"
         )
       });
     },
