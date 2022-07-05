@@ -262,7 +262,14 @@ export default {
         },
         backendOptions: [{ value: "http://192.168.99.73:25500/sub?" },{value: "https://sub.ops.ci/sub?"},{value: "https://api.tsutsu.one/sub?"},{value: "https://sub.zua426.gq/sub?"},],
         remoteConfig: [
-        {
+        {    
+            label: "local",
+            options: [
+              {
+                label: "local",
+                value: "config/local.ini"
+              }
+            ]
             label: "ACL4SSR",
             options: [
               {
