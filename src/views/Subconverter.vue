@@ -11,16 +11,16 @@
           </div>
           <el-container>
             <el-form :model="form" label-width="80px" label-position="left" style="width: 100%">
-              <el-form-item label="模式设置:">
-                <el-radio v-model="advanced" label="1">基础模式</el-radio>
-                <el-radio v-model="advanced" label="2">进阶模式</el-radio>
+              <el-form-item label="模式:">
+                <el-radio v-model="advanced" label="1">基础</el-radio>
+                <el-radio v-model="advanced" label="2">进阶</el-radio>
               </el-form-item>
-              <el-form-item label="订阅链接:">
+              <el-form-item label="链接:">
                 <el-input
                   v-model="form.sourceSubUrl"
                   type="textarea"
                   rows="3"
-                  placeholder="支持订阅或ss/ssr/vmess链接，多个链接每行一个或用 | 分隔"
+                  placeholder="大杂烩都可以"
                   @blur="saveSubUrl"
                 />
               </el-form-item>
@@ -31,17 +31,17 @@
               </el-form-item>
 
               <div v-if="advanced === '2'">
-                <el-form-item label="后端地址:">
+                <el-form-item label="后端:">
                   <el-autocomplete
                     style="width: 100%"
                     v-model="form.customBackend"
                     :fetch-suggestions="backendSearch"
-                    placeholder="动动小手，（建议）自行搭建后端服务。例：http://127.0.0.1:25500/sub?"
+                    placeholder="http://127.0.0.1:25500/sub?"
                   >
-                    <el-button slot="append" @click="gotoGayhub" icon="el-icon-link">前往项目仓库</el-button>
+                    <el-button slot="append" @click="gotoGayhub" icon="el-icon-link">本地</el-button>
                   </el-autocomplete>
                 </el-form-item>
-                <el-form-item label="远程配置:">
+                <el-form-item label="远程:">
                   <el-select
                     v-model="form.remoteConfig"
                     allow-create
@@ -65,18 +65,18 @@
                   </el-select>
                 </el-form-item>
                 <el-form-item label="Include:">
-                  <el-input v-model="form.includeRemarks" placeholder="节点名包含的关键字，支持正则" />
+                  <el-input v-model="form.includeRemarks" placeholder="包含" />
                 </el-form-item>
                 <el-form-item label="Exclude:">
-                  <el-input v-model="form.excludeRemarks" placeholder="节点名不包含的关键字，支持正则" />
+                  <el-input v-model="form.excludeRemarks" placeholder="不含" />
                 </el-form-item>
                 <el-form-item label="FileName:">
-                  <el-input v-model="form.filename" placeholder="返回的订阅文件名" />
+                  <el-input v-model="form.filename" placeholder="名称" />
                 </el-form-item>
                 <el-form-item label-width="0px">
                   <el-row type="flex">
                     <el-col>
-                      <el-checkbox v-model="form.nodeList" label="输出为 Node List" border></el-checkbox>
+                      <el-checkbox v-model="form.nodeList" label="Node List" border></el-checkbox>
                     </el-col>
                     <el-popover placement="bottom" v-model="form.extraset">
                       <el-row>
@@ -97,7 +97,7 @@
                       <el-row>
                         <el-checkbox v-model="form.fdn" label="过滤非法节点"></el-checkbox>
                       </el-row>
-                      <el-button slot="reference">更多选项</el-button>
+                      <el-button slot="reference">更多</el-button>
                     </el-popover>
                     <el-popover placement="bottom" style="margin-left: 10px">
                       <el-row>
@@ -109,7 +109,7 @@
                       <el-row>
                         <el-checkbox v-model="form.insert" label="网易云"></el-checkbox>
                       </el-row>
-                      <el-button slot="reference">定制功能</el-button>
+                      <el-button slot="reference">定制</el-button>
                     </el-popover>
                   </el-row>
                 </el-form-item>
@@ -121,7 +121,7 @@
                 <i class="el-icon-magic-stick"></i>
               </el-divider>
 
-              <el-form-item label="定制订阅:">
+              <el-form-item label="订阅:">
                 <el-input class="copy-content" disabled v-model="customSubUrl">
                   <el-button
                     slot="append"
@@ -132,7 +132,7 @@
                   >复制</el-button>
                 </el-input>
               </el-form-item>
-              <el-form-item label="订阅短链:">
+              <el-form-item label="短链:">
                 <el-input class="copy-content" disabled v-model="curtomShortSubUrl">
                   <el-button
                     slot="append"
@@ -150,14 +150,14 @@
                   type="danger"
                   @click="makeUrl"
                   :disabled="form.sourceSubUrl.length === 0"
-                >生成订阅链接</el-button>
+                >生成订阅</el-button>
                 <el-button
                   style="width: 120px"
                   type="danger"
                   @click="makeShortUrl"
                   :loading="loading"
                   :disabled="customSubUrl.length === 0"
-                >生成短链接</el-button>
+                >生成短链</el-button>
                 <!-- <el-button style="width: 120px" type="primary" @click="surgeInstall" icon="el-icon-connection">一键导入Surge</el-button> -->
               </el-form-item>
 
@@ -168,14 +168,14 @@
                   @click="dialogUploadConfigVisible = true"
                   icon="el-icon-upload"
                   :loading="loading"
-                >上传配置</el-button>
+                >配置</el-button>
                 <el-button
                   style="width: 120px"
                   type="primary"
                   @click="clashInstall"
                   icon="el-icon-connection"
                   :disabled="customSubUrl.length === 0"
-                >一键导入Clash</el-button>
+                >导入Clash</el-button>
               </el-form-item>
             </el-form>
           </el-container>
@@ -193,7 +193,7 @@
       <div slot="title">
         Remote config upload
         <el-popover trigger="hover" placement="right" style="margin-left: 10px">
-          <el-link type="primary" :href="sampleConfig" target="_blank" icon="el-icon-info">参考配置</el-link>
+          <el-link type="primary" :href="sampleConfig" target="_blank" icon="el-icon-info">参考</el-link>
           <i class="el-icon-question" slot="reference"></i>
         </el-popover>
       </div>
@@ -275,44 +275,12 @@ export default {
             label: "ACL4SSR",
             options: [
               {
-                label: "ACL4SSR 本地 默认版 分组比较全",
+                label: "ACL4SSR 默认",
                 value: "config/ACL4SSR.ini"
               },
               {
-                label: "ACL4SSR_Mini 本地 精简版",
+                label: "ACL4SSR_Mini 精简",
                 value: "config/ACL4SSR_Mini.ini"
-              },
-              {
-                label: "ACL4SSR_Mini_NoAuto.ini 本地 精简版+无自动测速",
-                value: "config/ACL4SSR_Mini_NoAuto.ini"
-              },
-              {
-                label: "ACL4SSR_Mini_Fallback.ini 本地 精简版+fallback",
-                value: "config/ACL4SSR_Mini_Fallback.ini"
-              },
-              {
-                label: "ACL4SSR_BackCN 本地 回国",
-                value: "config/ACL4SSR_BackCN.ini"
-              },
-              {
-                label: "ACL4SSR_NoApple 本地 无苹果分流",
-                value: "config/ACL4SSR_NoApple.ini"
-              },
-              {
-                label: "ACL4SSR_NoAuto 本地 无自动测速 ",
-                value: "config/ACL4SSR_NoAuto.ini"
-              },
-              {
-                label: "ACL4SSR_NoAuto_NoApple 本地 无自动测速&无苹果分流",
-                value: "config/ACL4SSR_NoAuto_NoApple.ini"
-              },
-              {
-                label: "ACL4SSR_NoMicrosoft 本地 无微软分流",
-                value: "config/ACL4SSR_NoMicrosoft.ini"
-              },
-              {
-                label: "ACL4SSR_WithGFW 本地 GFW列表",
-                value: "config/ACL4SSR_WithGFW.ini"
               }
             ]
           },
@@ -326,7 +294,11 @@ export default {
         excludeRemarks: "",
         includeRemarks: "",
         filename: "",
-        udp: false, 
+        nodeList: false,
+        extraset: false,
+        udp: false,
+        appendType: false,
+        insert: false, 
         new_name: true, // 是否使用 Clash 新字段
 
         // tpl 定制功能
@@ -398,7 +370,7 @@ export default {
     },
     surgeInstall() {
       if (this.customSubUrl === "") {
-        this.$message.error("请先填写必填项，生成订阅链接");
+        this.$message.error("请先填写必填项，生成订阅");
         return false;
       }
 
@@ -407,7 +379,7 @@ export default {
     },
     makeUrl() {
       if (this.form.sourceSubUrl === "" || this.form.clientType === "") {
-        this.$message.error("订阅链接与客户端为必填项");
+        this.$message.error("链接与客户端为必填项");
         return false;
       }
 
@@ -482,11 +454,11 @@ export default {
       }
 
       this.$copyText(this.customSubUrl);
-      this.$message.success("定制订阅已复制到剪贴板");
+      this.$message.success("订阅已复制");
     },
     makeShortUrl() {
       if (this.customSubUrl === "") {
-        this.$message.warning("请先生成订阅链接，再获取对应短链接");
+        this.$message.warning("请先生成订阅，再获取对应短链");
         return false;
       }
 
@@ -505,13 +477,13 @@ export default {
           if (res.data.Code === 1 && res.data.ShortUrl !== "") {
             this.curtomShortSubUrl = res.data.ShortUrl;
             this.$copyText(res.data.ShortUrl);
-            this.$message.success("短链接已复制到剪贴板");
+            this.$message.success("短链已复制");
           } else {
-            this.$message.error("短链接获取失败：" + res.data.Message);
+            this.$message.error("短链获取失败：" + res.data.Message);
           }
         })
         .catch(() => {
-          this.$message.error("短链接获取失败");
+          this.$message.error("短链获取失败");
         })
         .finally(() => {
           this.loading = false;
@@ -519,7 +491,7 @@ export default {
     },
     confirmUploadConfig() {
       if (this.uploadConfig === "") {
-        this.$message.warning("远程配置不能为空");
+        this.$message.warning("远程不能为空");
         return false;
       }
 
@@ -538,7 +510,7 @@ export default {
         .then(res => {
           if (res.data.Code === 1 && res.data.url !== "") {
             this.$message.success(
-              "远程配置上传成功，配置链接已复制到剪贴板，有效期三个月望知悉"
+              "配置上传成功，配置已复制到剪贴板，有效期三个月"
             );
 
             // 自动填充至『表单-远程配置』
@@ -547,11 +519,11 @@ export default {
 
             this.dialogUploadConfigVisible = false;
           } else {
-            this.$message.error("远程配置上传失败：" + res.data.Message);
+            this.$message.error("远程上传失败：" + res.data.Message);
           }
         })
         .catch(() => {
-          this.$message.error("远程配置上传失败");
+          this.$message.error("远程上传失败");
         })
         .finally(() => {
           this.loading = false;
