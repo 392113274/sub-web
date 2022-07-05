@@ -255,7 +255,7 @@ export default {
           ClashR: "clashr",
           Surge2: "surge&ver=2",
         },
-        backendOptions: [{ value: "https://192.168.99.73:25500/sub?" }],
+        backendOptions: [{ value: "https://192.168.99.73:25500/sub?" },{value: "https://sub.ops.ci/sub?"},{value: "https://api.tsutsu.one/sub?"},],
         remoteConfig: [
         {
             label: "ACL4SSR",
