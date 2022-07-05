@@ -270,6 +270,8 @@ export default {
                 value: "config/local.ini"
               }
             ]
+        },
+        {
             label: "ACL4SSR",
             options: [
               {
