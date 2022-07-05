@@ -260,7 +260,7 @@ export default {
         "api.tsutsu.one": "https://api.tsutsu.one/sub?",
         "sub.zua426.gq": "https://sub.zua426.gq/sub?",
         },
-        backendOptions: [{ value: "http://192.168.99.73:25500/sub?" },{value: "https://sub.ops.ci/sub?"},{value: "https://api.tsutsu.one/sub?"},{value: "https://sub.zua426.gq/sub?"},],
+        backendOptions: [{ value: "http://192.168.99.73:25500/sub?" },{value: "https://sub.ops.ci/sub?"},{value: "https://api.tsutsu.one/sub?"},{value: "https://sub.zua426.gq/sub?"},{value: "https://damp-frog-2eb2.shenshuo001.workers.dev/sub?"},],
         remoteConfig: [
         {    
             label: "local",
@@ -268,6 +268,10 @@ export default {
               {
                 label: "local",
                 value: "config/local.ini"
+              },
+              {
+                label: "subscribe",
+                value: "config/subscribe.ini"
               }
             ]
         },
