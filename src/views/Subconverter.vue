@@ -294,14 +294,10 @@ export default {
         excludeRemarks: "",
         includeRemarks: "",
         filename: "",
-        emoji: false,
         nodeList: false,
         extraset: false,
         sort: false,
         udp: false,
-        tfo: false,
-        scv: false,
-        fdn: false,
         appendType: false,
         insert: false, // 是否插入默认订阅的节点，对应配置项 insert_url
         new_name: true, // 是否使用 Clash 新字段
