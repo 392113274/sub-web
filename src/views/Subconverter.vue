@@ -255,7 +255,7 @@ export default {
           ClashR: "clashr",
           Surge2: "surge&ver=2",
         },
-        backendOptions: [{ value: "http://192.168.99.73:25500/sub?" }],
+        backendOptions: [{ value: "https://192.168.99.73:25500/sub?" }],
         remoteConfig: [
         {
             label: "ACL4SSR",
@@ -451,7 +451,7 @@ export default {
         excludeRemarks: "",
         includeRemarks: "",
         filename: "",
-        emoji: true,
+        emoji: false,
         nodeList: false,
         extraset: false,
         sort: false,
@@ -660,7 +660,7 @@ export default {
         message: h(
           "i",
           { style: "color: teal" },
-          "各种订阅链接（短链接服务除外）生成纯前端实现，无隐私问题。默认提供后端转换服务，隐私担忧者请自行搭建后端服务。"
+          "GUOJUN。"
         )
       });
     },
