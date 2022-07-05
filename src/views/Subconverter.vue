@@ -651,19 +651,6 @@ export default {
           this.loading = false;
         });
     },
-    notify() {
-      const h = this.$createElement;
-
-      this.$notify({
-        title: "GUO",
-        type: "warning",
-        message: h(
-          "i",
-          { style: "color: teal" },
-          "JUN"
-        )
-      });
-    },
     confirmUploadConfig() {
       if (this.uploadConfig === "") {
         this.$message.warning("远程配置不能为空");
