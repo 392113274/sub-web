@@ -255,11 +255,15 @@ export default {
           ClashR: "clashr",
           Surge2: "surge&ver=2",
         },
-        backendOptions: [{ value: "https://production.damp-frog-2eb2.shenshuo001.workers.dev/sub?" }],
+        backendOptions: [{ value: "http://192.168.99.73:25500/sub?" }],
         remoteConfig: [
         {
             label: "ACL4SSR",
             options: [
+              {
+                label: "clash",
+                value: "config/ACL4SSR.ini"
+              },
               {
                 label: "ACL4SSR_Online 默认版 分组比较全 (与Github同步)",
                 value:
