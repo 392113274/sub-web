@@ -318,7 +318,7 @@ export default {
     };
   },
   created() {
-    document.title = "Love Converter";
+    document.title = "Love";
     this.isPC = this.$getOS().isPc;
 
     // 获取 url cache
