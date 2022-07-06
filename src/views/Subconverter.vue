@@ -390,9 +390,7 @@ export default {
         "target=" +
         this.form.clientType +
         "&url=" +
-        encodeURIComponent(sourceSub) +
-        "&insert=" +
-        this.form.insert;
+        encodeURIComponent(sourceSub);
 
       if (this.advanced === "2") {
         if (this.form.remoteConfig !== "") {
@@ -411,24 +409,6 @@ export default {
           this.customSubUrl +=
             "&filename=" + encodeURIComponent(this.form.filename);
         }
-        if (this.form.appendType) {
-          this.customSubUrl +=
-            "&append_type=" + this.form.appendType.toString();
-        }
-
-        this.customSubUrl +=
-          "&emoji=" +
-          this.form.emoji.toString() +
-          "&list=" +
-          this.form.nodeList.toString() +
-          "&tfo=" +
-          this.form.tfo.toString() +
-          "&scv=" +
-          this.form.scv.toString() +
-          "&fdn=" +
-          this.form.fdn.toString() +
-          "&sort=" +
-          this.form.sort.toString();
 
         if (this.needUdp) {
           this.customSubUrl += "&udp=" + this.form.udp.toString()
@@ -442,8 +422,6 @@ export default {
           if (this.form.tpl.clash.doh === true) {
             this.customSubUrl += "&clash.doh=true";
           }
-
-          this.customSubUrl += "&new_name=" + this.form.new_name.toString();
         }
       }
 
@@ -504,7 +482,7 @@ export default {
         .then(res => {
           if (res.data.Code === 1 && res.data.url !== "") {
             this.$message.success(
-              "配置上传成功，配置已复制到剪贴板，有效期三个月"
+              "成功，有效三个月"
             );
 
             // 自动填充至『表单-远程配置』
