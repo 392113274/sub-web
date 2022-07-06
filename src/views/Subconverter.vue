@@ -4,7 +4,7 @@
       <el-col>
         <el-card>
           <div slot="header">
-            Converter
+            love
             <svg-icon icon-class="github" style="margin-left: 20px" @click="goToProject" />
 
             <div style="display: inline-block; position:absolute; right: 20px">{{ backendVersion }}</div>
@@ -143,7 +143,7 @@
       <div slot="title">
         upload
         <el-popover trigger="hover" placement="right" style="margin-left: 10px">
-          <el-link type="primary" :href="sampleConfig" target="_blank" icon="el-icon-info">参考</el-link>
+          <el-link type="primary" :href="sampleConfig" target="_blank" icon="el-icon-info">样本</el-link>
           <i class="el-icon-question" slot="reference"></i>
         </el-popover>
       </div>
