@@ -24,11 +24,35 @@
                   @blur="saveSubUrl"
                 />
               </el-form-item>
-              <el-form-item label="客户端:">
+              <el-form-item label="类型:">
                 <el-select v-model="form.clientType" style="width: 100%">
                   <el-option v-for="(v, k) in options.clientTypes" :key="k" :label="k" :value="v"></el-option>
                 </el-select>
               </el-form-item>
+              
+              <el-form-item label="规则:">
+                  <el-select
+                    v-model="form.remoteConfig"
+                    allow-create
+                    filterable
+                    placeholder="请选择"
+                    style="width: 100%"
+                  >
+                    <el-option-group
+                      v-for="group in options.remoteConfig"
+                      :key="group.label"
+                      :label="group.label"
+                    >
+                      <el-option
+                        v-for="item in group.options"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value"
+                      ></el-option>
+                    </el-option-group>
+                    <el-button slot="append" @click="gotoRemoteConfig" icon="el-icon-link">配置示例</el-button>
+                  </el-select>
+                </el-form-item>
 
               <div v-if="advanced === '2'">
                 <el-form-item label="后端:">
@@ -41,7 +65,7 @@
                     <el-button slot="append" @click="gotoGayhub" icon="el-icon-link">本地</el-button>
                   </el-autocomplete>
                 </el-form-item>
-                <el-form-item label="远程:">
+                <el-form-item label="规则:">
                   <el-select
                     v-model="form.remoteConfig"
                     allow-create
