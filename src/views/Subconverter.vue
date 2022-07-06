@@ -55,7 +55,7 @@
                 </el-form-item>
 
               <div v-if="advanced === '2'">
-                <el-form-item label="后端:">
+                <el-form-item label="地址:">
                   <el-autocomplete
                     style="width: 100%"
                     v-model="form.customBackend"
@@ -65,78 +65,7 @@
                     <el-button slot="append" @click="gotoGayhub" icon="el-icon-link">本地</el-button>
                   </el-autocomplete>
                 </el-form-item>
-                <el-form-item label="规则:">
-                  <el-select
-                    v-model="form.remoteConfig"
-                    allow-create
-                    filterable
-                    placeholder="请选择"
-                    style="width: 100%"
-                  >
-                    <el-option-group
-                      v-for="group in options.remoteConfig"
-                      :key="group.label"
-                      :label="group.label"
-                    >
-                      <el-option
-                        v-for="item in group.options"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value"
-                      ></el-option>
-                    </el-option-group>
-                    <el-button slot="append" @click="gotoRemoteConfig" icon="el-icon-link">配置示例</el-button>
-                  </el-select>
-                </el-form-item>
-                <el-form-item label="Include:">
-                  <el-input v-model="form.includeRemarks" placeholder="包含" />
-                </el-form-item>
-                <el-form-item label="Exclude:">
-                  <el-input v-model="form.excludeRemarks" placeholder="不含" />
-                </el-form-item>
-                <el-form-item label="FileName:">
-                  <el-input v-model="form.filename" placeholder="名称" />
-                </el-form-item>
-                <el-form-item label-width="0px">
-                  <el-row type="flex">
-                    <el-col>
-                      <el-checkbox v-model="form.nodeList" label="Node List" border></el-checkbox>
-                    </el-col>
-                    <el-popover placement="bottom" v-model="form.extraset">
-                      <el-row>
-                        <el-checkbox v-model="form.emoji" label="Emoji"></el-checkbox>
-                      </el-row>
-                      <el-row>
-                        <el-checkbox v-model="form.new_name" label="Clash New Field"></el-checkbox>
-                      </el-row>
-                      <el-row>
-                        <el-checkbox v-model="form.udp" @change="needUdp = true" label="启用 UDP"></el-checkbox>
-                      </el-row>
-                      <el-row>
-                        <el-checkbox v-model="form.appendType" label="节点类型"></el-checkbox>
-                      </el-row>
-                      <el-row>
-                        <el-checkbox v-model="form.sort" label="排序节点"></el-checkbox>
-                      </el-row>
-                      <el-row>
-                        <el-checkbox v-model="form.fdn" label="过滤非法节点"></el-checkbox>
-                      </el-row>
-                      <el-button slot="reference">更多</el-button>
-                    </el-popover>
-                    <el-popover placement="bottom" style="margin-left: 10px">
-                      <el-row>
-                        <el-checkbox v-model="form.tpl.surge.doh" label="Surge.DoH"></el-checkbox>
-                      </el-row>
-                      <el-row>
-                        <el-checkbox v-model="form.tpl.clash.doh" label="Clash.DoH"></el-checkbox>
-                      </el-row>
-                      <el-row>
-                        <el-checkbox v-model="form.insert" label="网易云"></el-checkbox>
-                      </el-row>
-                      <el-button slot="reference">定制</el-button>
-                    </el-popover>
-                  </el-row>
-                </el-form-item>
+
               </div>
 
               <div style="margin-top: 50px"></div>
@@ -424,7 +353,7 @@ export default {
     },
     clashInstall() {
       if (this.customSubUrl === "") {
-        this.$message.error("请先填写必填项，生成订阅链接");
+        this.$message.error("必填");
         return false;
       }
 
@@ -440,7 +369,7 @@ export default {
     },
     surgeInstall() {
       if (this.customSubUrl === "") {
-        this.$message.error("请先填写必填项，生成订阅");
+        this.$message.error("必填");
         return false;
       }
 
@@ -449,7 +378,7 @@ export default {
     },
     makeUrl() {
       if (this.form.sourceSubUrl === "" || this.form.clientType === "") {
-        this.$message.error("链接与客户端为必填项");
+        this.$message.error("必填");
         return false;
       }
 
@@ -549,11 +478,11 @@ export default {
             this.$copyText(res.data.ShortUrl);
             this.$message.success("短链已复制");
           } else {
-            this.$message.error("短链获取失败：" + res.data.Message);
+            this.$message.error("短链失败：" + res.data.Message);
           }
         })
         .catch(() => {
-          this.$message.error("短链获取失败");
+          this.$message.error("短链失败");
         })
         .finally(() => {
           this.loading = false;
@@ -561,7 +490,7 @@ export default {
     },
     confirmUploadConfig() {
       if (this.uploadConfig === "") {
-        this.$message.warning("远程不能为空");
+        this.$message.warning("不能空");
         return false;
       }
 
@@ -589,11 +518,11 @@ export default {
 
             this.dialogUploadConfigVisible = false;
           } else {
-            this.$message.error("远程上传失败：" + res.data.Message);
+            this.$message.error("上传失败：" + res.data.Message);
           }
         })
         .catch(() => {
-          this.$message.error("远程上传失败");
+          this.$message.error("上传失败");
         })
         .finally(() => {
           this.loading = false;
