@@ -275,15 +275,52 @@ export default {
               }
             ]
         },
+        {    
+            label: "subscribe",
+            options: [
+              {
+                label: "G2",
+                value: "config/G2.ini"
+              },
+              {
+                label: "G3",
+                value: "config/G3.ini"
+              },
+              {
+                label: "G4",
+                value: "config/G4.ini"
+              },
+              {
+                label: "G5",
+                value: "config/G5.ini"
+              },
+              {
+                label: "G6",
+                value: "config/G6.ini"
+              },
+              {
+                label: "G7",
+                value: "config/G7.ini"
+              },
+              {
+                label: "G8",
+                value: "config/G8.ini"
+              },
+              {
+                label: "G9",
+                value: "config/G9.ini"
+              }
+            ]
+        },
         {
             label: "ACL4SSR",
             options: [
               {
-                label: "ACL4SSR 默认",
+                label: "Default",
                 value: "config/ACL4SSR.ini"
               },
               {
-                label: "ACL4SSR_Mini 精简",
+                label: "Mini",
                 value: "config/ACL4SSR_Mini.ini"
               }
             ]
