@@ -153,7 +153,7 @@
             v-model="uploadConfig"
             type="textarea"
             :autosize="{ minRows: 15, maxRows: 15}"
-            maxlength="5000"
+            maxlength="10000"
             show-word-limit
           ></el-input>
         </el-form-item>
