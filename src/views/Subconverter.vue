@@ -36,7 +36,7 @@
                     v-model="form.remoteConfig"
                     allow-create
                     filterable
-                    placeholder="请选择"
+                    placeholder="select"
                     style="width: 100%"
                   >
                     <el-option-group
@@ -58,7 +58,7 @@
                     v-model="form.customBackend"
                     allow-create
                     filterable
-                    placeholder="请选择"
+                    placeholder="select"
                     style="width: 100%">
                     <el-option v-for="(v, k) in options.customBackend" :key="k" :label="k" :value="v"></el-option>
                   </el-select>
@@ -141,7 +141,7 @@
       width="700px"
     >
       <div slot="title">
-        Remote config upload
+        upload
         <el-popover trigger="hover" placement="right" style="margin-left: 10px">
           <el-link type="primary" :href="sampleConfig" target="_blank" icon="el-icon-info">参考</el-link>
           <i class="el-icon-question" slot="reference"></i>
@@ -183,7 +183,7 @@ export default {
   data() {
     return {
       backendVersion: "",
-      advanced: "2",
+      advanced: "1",
 
       // 是否为 PC 端
       isPC: true,
@@ -191,26 +191,22 @@ export default {
       options: {
         clientTypes: {
           Clash: "clash",
-          Surge3: "surge&ver=3",
-          Surge4: "surge&ver=4",
-          Quantumult: "quan",
-          QuantumultX: "quanx",
-          Surfboard: "surfboard",
-          Loon: "loon",
-          SSAndroid: "sssub",
           V2Ray: "v2ray",
-          ss: "ss",
-          ssr: "ssr",
-          ssd: "ssd",
-          ClashR: "clashr",
-          Surge2: "surge&ver=2",
         },
-        customBackend: {"local": "http://192.168.99.73:25500/sub?",
+        customBackend: {
+        "local": "http://192.168.99.73:25500/sub?",
         "sub.ops.ci": "https://sub.ops.ci/sub?",
         "api.tsutsu.one": "https://api.tsutsu.one/sub?",
         "sub.zua426.gq": "https://sub.zua426.gq/sub?",
+        "scvt.guojun.ml": "https://damp-frog-2eb2.shenshuo001.workers.dev/sub?",
         },
-        backendOptions: [{ value: "http://192.168.99.73:25500/sub?" },{value: "https://sub.ops.ci/sub?"},{value: "https://api.tsutsu.one/sub?"},{value: "https://sub.zua426.gq/sub?"},{value: "https://damp-frog-2eb2.shenshuo001.workers.dev/sub?"},],
+        backendOptions: [
+        {value: "http://192.168.99.73:25500/sub?" },
+        {value: "https://sub.ops.ci/sub?"},
+        {value: "https://api.tsutsu.one/sub?"},
+        {value: "https://sub.zua426.gq/sub?"},
+        {value: "https://damp-frog-2eb2.shenshuo001.workers.dev/sub?"},
+        ],
         remoteConfig: [
         {    
             label: "local",
@@ -285,6 +281,7 @@ export default {
         excludeRemarks: "",
         includeRemarks: "",
         filename: "",
+        emoji: false,
         nodeList: false,
         extraset: false,
         sort: false,
@@ -292,7 +289,6 @@ export default {
         tfo: false,
         scv: false,
         fdn: false,
-        emoji: false,
         appendType: false,
         insert: false, // 是否插入默认订阅的节点，对应配置项 insert_url
         new_name: true, // 是否使用 Clash 新字段
@@ -322,7 +318,7 @@ export default {
     };
   },
   created() {
-    document.title = "Subscription Converter";
+    document.title = "Love Converter";
     this.isPC = this.$getOS().isPc;
 
     // 获取 url cache
@@ -332,6 +328,8 @@ export default {
   },
   mounted() {
     this.form.clientType = "clash";
+    this.form.customBackend = "http://192.168.99.73:25500/sub?";
+    this.form.remoteConfig = "config/local.ini";
     this.notify();
     this.getBackendVersion();
   },
@@ -341,6 +339,9 @@ export default {
     },
     goToProject() {
       window.open(project);
+    },
+	  gotoTgChannel() {
+      window.open(tgBotLink);
     },
     gotoGayhub() {
       window.open(gayhubRelease);
