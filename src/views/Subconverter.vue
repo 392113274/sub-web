@@ -30,6 +30,7 @@
                 </el-select>
               </el-form-item>
               
+              <div v-if="advanced === '2'">
               <el-form-item label="规则:">
                   <el-select
                     v-model="form.remoteConfig"
@@ -50,22 +51,18 @@
                         :value="item.value"
                       ></el-option>
                     </el-option-group>
-                    <el-button slot="append" @click="gotoRemoteConfig" icon="el-icon-link">配置示例</el-button>
                   </el-select>
                 </el-form-item>
-
-              <div v-if="advanced === '2'">
                 <el-form-item label="地址:">
-                  <el-autocomplete
-                    style="width: 100%"
+                  <el-select
                     v-model="form.customBackend"
-                    :fetch-suggestions="backendSearch"
-                    placeholder="http://127.0.0.1:25500/sub?"
-                  >
-                    <el-button slot="append" @click="gotoGayhub" icon="el-icon-link">本地</el-button>
-                  </el-autocomplete>
+                    allow-create
+                    filterable
+                    placeholder="请选择"
+                    style="width: 100%">
+                    <el-option v-for="(v, k) in options.customBackend" :key="k" :label="k" :value="v"></el-option>
+                  </el-select>
                 </el-form-item>
-
               </div>
 
               <div style="margin-top: 50px"></div>
