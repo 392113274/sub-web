@@ -72,13 +72,7 @@
                 <el-form-item label="Filename:">
                   <el-input v-model="form.filename" placeholder="filename" />
                 </el-form-item>
-                <el-form-item label-width="0px">
-                  <el-row type="flex">
-                    <el-col>
-                      <el-checkbox v-model="form.emoji" label="Emoji" border></el-checkbox>
-                    </el-col>
-                  </el-row>
-                </el-form-item>
+
               </div>
 
               <div style="margin-top: 50px"></div>
