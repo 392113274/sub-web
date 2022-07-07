@@ -11,27 +11,27 @@
           </div>
           <el-container>
             <el-form :model="form" label-width="80px" label-position="left" style="width: 100%">
-              <el-form-item label="模式:">
-                <el-radio v-model="advanced" label="1">基础</el-radio>
-                <el-radio v-model="advanced" label="2">进阶</el-radio>
+              <el-form-item label=" Mode: ">
+                <el-radio v-model="advanced" label="1"> Base </el-radio>
+                <el-radio v-model="advanced" label="2">Advanced</el-radio>
               </el-form-item>
-              <el-form-item label="链接:">
+              <el-form-item label="Urllink:">
                 <el-input
                   v-model="form.sourceSubUrl"
                   type="textarea"
                   rows="3"
-                  placeholder="大杂烩都可以"
+                  placeholder="all in"
                   @blur="saveSubUrl"
                 />
               </el-form-item>
-              <el-form-item label="类型:">
+              <el-form-item label=" Type: ">
                 <el-select v-model="form.clientType" style="width: 100%">
                   <el-option v-for="(v, k) in options.clientTypes" :key="k" :label="k" :value="v"></el-option>
                 </el-select>
               </el-form-item>
               
               <div v-if="advanced === '2'">
-              <el-form-item label="规则:">
+              <el-form-item label="Ruleset:">
                   <el-select
                     v-model="form.remoteConfig"
                     allow-create
@@ -53,7 +53,7 @@
                     </el-option-group>
                   </el-select>
                 </el-form-item>
-                <el-form-item label="地址:">
+                <el-form-item label="Backend:">
                   <el-select
                     v-model="form.customBackend"
                     allow-create
@@ -77,7 +77,7 @@
                 <i class="el-icon-magic-stick"></i>
               </el-divider>
 
-              <el-form-item label="订阅:">
+              <el-form-item label="Subscribe:">
                 <el-input class="copy-content" disabled v-model="customSubUrl">
                   <el-button
                     slot="append"
@@ -88,7 +88,7 @@
                   >复制</el-button>
                 </el-input>
               </el-form-item>
-              <el-form-item label="短链:">
+              <el-form-item label="Shortlink:">
                 <el-input class="copy-content" disabled v-model="curtomShortSubUrl">
                   <el-button
                     slot="append"
@@ -96,7 +96,7 @@
                     v-clipboard:success="onCopy"
                     ref="copy-btn"
                     icon="el-icon-document-copy"
-                  >复制</el-button>
+                  >copy</el-button>
                 </el-input>
               </el-form-item>
 
@@ -106,15 +106,15 @@
                   type="danger"
                   @click="makeUrl"
                   :disabled="form.sourceSubUrl.length === 0"
-                >生成订阅</el-button>
+                >Generate sub</el-button>
                 <el-button
                   style="width: 120px"
                   type="danger"
                   @click="makeShortUrl"
                   :loading="loading"
                   :disabled="customSubUrl.length === 0"
-                >生成短链</el-button>
-                <!-- <el-button style="width: 120px" type="primary" @click="surgeInstall" icon="el-icon-connection">一键导入Surge</el-button> -->
+                >Generate short</el-button>
+                <!-- <el-button style="width: 120px" type="primary" @click="surgeInstall" icon="el-icon-connection">import Surge</el-button> -->
               </el-form-item>
 
               <el-form-item label-width="0px" style="text-align: center">
@@ -124,14 +124,14 @@
                   @click="dialogUploadConfigVisible = true"
                   icon="el-icon-upload"
                   :loading="loading"
-                >配置</el-button>
+                >config</el-button>
                 <el-button
                   style="width: 120px"
                   type="primary"
                   @click="clashInstall"
                   icon="el-icon-connection"
                   :disabled="customSubUrl.length === 0"
-                >导入Clash</el-button>
+                >import Clash</el-button>
               </el-form-item>
             </el-form>
           </el-container>
@@ -149,7 +149,7 @@
       <div slot="title">
         upload
         <el-popover trigger="hover" placement="right" style="margin-left: 10px">
-          <el-link type="primary" :href="sampleConfig" target="_blank" icon="el-icon-info">样本</el-link>
+          <el-link type="primary" :href="sampleConfig" target="_blank" icon="el-icon-info">sample</el-link>
           <i class="el-icon-question" slot="reference"></i>
         </el-popover>
       </div>
@@ -170,7 +170,7 @@
           type="primary"
           @click="confirmUploadConfig"
           :disabled="uploadConfig.length === 0"
-        >确 定</el-button>
+        >Sure</el-button>
       </div>
     </el-dialog>
   </div>
@@ -214,19 +214,6 @@ export default {
         {value: "https://scvt.guojun.ml/sub?"},
         ],
         remoteConfig: [
-        {    
-            label: "local",
-            options: [
-              {
-                label: "local",
-                value: "config/local.ini"
-              },
-              {
-                label: "subscribe",
-                value: "config/subscribe.ini"
-              }
-            ]
-        },
         {    
             label: "subscribe",
             options: [
@@ -352,7 +339,7 @@ export default {
     },
     clashInstall() {
       if (this.customSubUrl === "") {
-        this.$message.error("必填");
+        this.$message.error("Required");
         return false;
       }
 
@@ -368,7 +355,7 @@ export default {
     },
     surgeInstall() {
       if (this.customSubUrl === "") {
-        this.$message.error("必填");
+        this.$message.error("Required");
         return false;
       }
 
@@ -377,7 +364,7 @@ export default {
     },
     makeUrl() {
       if (this.form.sourceSubUrl === "" || this.form.clientType === "") {
-        this.$message.error("必填");
+        this.$message.error("Required");
         return false;
       }
 
@@ -430,11 +417,11 @@ export default {
       }
 
       this.$copyText(this.customSubUrl);
-      this.$message.success("订阅已复制");
+      this.$message.success("copied");
     },
     makeShortUrl() {
       if (this.customSubUrl === "") {
-        this.$message.warning("请先生成订阅，再获取对应短链");
+        this.$message.warning("Please generate a subscription first, and then get the corresponding short link");
         return false;
       }
 
@@ -453,13 +440,13 @@ export default {
           if (res.data.Code === 1 && res.data.ShortUrl !== "") {
             this.curtomShortSubUrl = res.data.ShortUrl;
             this.$copyText(res.data.ShortUrl);
-            this.$message.success("短链已复制");
+            this.$message.success("short copied");
           } else {
-            this.$message.error("短链失败：" + res.data.Message);
+            this.$message.error("false：" + res.data.Message);
           }
         })
         .catch(() => {
-          this.$message.error("短链失败");
+          this.$message.error("false");
         })
         .finally(() => {
           this.loading = false;
@@ -467,7 +454,7 @@ export default {
     },
     confirmUploadConfig() {
       if (this.uploadConfig === "") {
-        this.$message.warning("不能空");
+        this.$message.warning("not null");
         return false;
       }
 
@@ -486,7 +473,7 @@ export default {
         .then(res => {
           if (res.data.Code === 1 && res.data.url !== "") {
             this.$message.success(
-              "成功，有效三个月"
+              "Success, valid for three months"
             );
 
             // 自动填充至『表单-远程配置』
@@ -495,11 +482,11 @@ export default {
 
             this.dialogUploadConfigVisible = false;
           } else {
-            this.$message.error("上传失败：" + res.data.Message);
+            this.$message.error("fail：" + res.data.Message);
           }
         })
         .catch(() => {
-          this.$message.error("上传失败");
+          this.$message.error("false");
         })
         .finally(() => {
           this.loading = false;
