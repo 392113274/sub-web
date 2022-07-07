@@ -11,8 +11,8 @@
           </div>
           <el-container>
             <el-form :model="form" label-width="80px" label-position="left" style="width: 100%">
-              <el-form-item label=" Mode: ">
-                <el-radio v-model="advanced" label="1"> Base </el-radio>
+              <el-form-item label="Mode:">
+                <el-radio v-model="advanced" label="1">Base</el-radio>
                 <el-radio v-model="advanced" label="2">Advanced</el-radio>
               </el-form-item>
               <el-form-item label="Urllink:">
@@ -23,16 +23,15 @@
                   placeholder="all in"
                   @blur="saveSubUrl"
                 />
-
-              
-              <div v-if="advanced === '2'">
               </el-form-item>
-              <el-form-item label=" Type: ">
+              <el-form-item label="Type:">
                 <el-select v-model="form.clientType" style="width: 100%">
                   <el-option v-for="(v, k) in options.clientTypes" :key="k" :label="k" :value="v"></el-option>
                 </el-select>
               </el-form-item>
-              <el-form-item label="Ruleset:">
+              
+              <div v-if="advanced === '2'">
+              <el-form-item label="Config:">
                   <el-select
                     v-model="form.remoteConfig"
                     allow-create
