@@ -63,6 +63,15 @@
                     <el-option v-for="(v, k) in options.customBackend" :key="k" :label="k" :value="v"></el-option>
                   </el-select>
                 </el-form-item>
+                <el-form-item label="Include:">
+                  <el-input v-model="form.includeRemarks" placeholder="input" />
+                </el-form-item>
+                <el-form-item label="Exclude:">
+                  <el-input v-model="form.excludeRemarks" placeholder="input" />
+                </el-form-item>
+                <el-form-item label="Filename:">
+                  <el-input v-model="form.filename" placeholder="output" />
+                </el-form-item>
               </div>
 
               <div style="margin-top: 50px"></div>
