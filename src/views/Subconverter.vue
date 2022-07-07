@@ -64,13 +64,20 @@
                   </el-select>
                 </el-form-item>
                 <el-form-item label="Include:">
-                  <el-input v-model="form.includeRemarks" placeholder="input" />
+                  <el-input v-model="form.includeRemarks" placeholder="include" />
                 </el-form-item>
                 <el-form-item label="Exclude:">
-                  <el-input v-model="form.excludeRemarks" placeholder="input" />
+                  <el-input v-model="form.excludeRemarks" placeholder="exclude" />
                 </el-form-item>
                 <el-form-item label="Filename:">
-                  <el-input v-model="form.filename" placeholder="output" />
+                  <el-input v-model="form.filename" placeholder="filename" />
+                </el-form-item>
+                <el-form-item label-width="0px">
+                  <el-row type="flex">
+                    <el-col>
+                      <el-checkbox v-model="form.emoji" label="Emoji" border></el-checkbox>
+                    </el-col>
+                  </el-row>
                 </el-form-item>
               </div>
 
@@ -207,14 +214,14 @@ export default {
         "sub.ops.ci": "https://sub.ops.ci/sub?",
         "api.tsutsu.one": "https://api.tsutsu.one/sub?",
         "sub.zua426.gq": "https://sub.zua426.gq/sub?",
-        "scvt.guojun.ml": "https://damp-frog-2eb2.shenshuo001.workers.dev/sub?",
+        "scvt.guojun.ml": "https://scvt.guojun.ml/sub?",
         },
         backendOptions: [
         {value: "http://192.168.99.73:25500/sub?" },
         {value: "https://sub.ops.ci/sub?"},
         {value: "https://api.tsutsu.one/sub?"},
         {value: "https://sub.zua426.gq/sub?"},
-        {value: "https://damp-frog-2eb2.shenshuo001.workers.dev/sub?"},
+        {value: "https://scvt.guojun.ml/sub?"},
         ],
         remoteConfig: [
         {    
