@@ -23,14 +23,13 @@
                   placeholder="大杂烩都可以"
                   @blur="saveSubUrl"
                 />
+              <div v-if="advanced === '2'">
               </el-form-item>
               <el-form-item label="类型:">
                 <el-select v-model="form.clientType" style="width: 100%">
                   <el-option v-for="(v, k) in options.clientTypes" :key="k" :label="k" :value="v"></el-option>
                 </el-select>
               </el-form-item>
-              
-              <div v-if="advanced === '2'">
               <el-form-item label="规则:">
                   <el-select
                     v-model="form.remoteConfig"
@@ -69,10 +68,6 @@
                 <el-form-item label="Exclude:">
                   <el-input v-model="form.excludeRemarks" placeholder="exclude" />
                 </el-form-item>
-                <el-form-item label="Filename:">
-                  <el-input v-model="form.filename" placeholder="filename" />
-                </el-form-item>
-
               </div>
 
               <div style="margin-top: 50px"></div>
@@ -338,8 +333,6 @@ export default {
   },
   mounted() {
     this.form.clientType = "clash";
-    this.form.customBackend = "http://192.168.99.73:25500/sub?";
-    this.form.remoteConfig = "config/local.ini";
     this.notify();
     this.getBackendVersion();
   },
