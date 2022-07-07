@@ -85,7 +85,7 @@
                     v-clipboard:success="onCopy"
                     ref="copy-btn"
                     icon="el-icon-document-copy"
-                  >复制</el-button>
+                  >Copy</el-button>
                 </el-input>
               </el-form-item>
               <el-form-item label="Shortlink:">
@@ -96,7 +96,7 @@
                     v-clipboard:success="onCopy"
                     ref="copy-btn"
                     icon="el-icon-document-copy"
-                  >copy</el-button>
+                  >Copy</el-button>
                 </el-input>
               </el-form-item>
 
@@ -106,14 +106,14 @@
                   type="danger"
                   @click="makeUrl"
                   :disabled="form.sourceSubUrl.length === 0"
-                >Generate sub</el-button>
+                >Subscribe</el-button>
                 <el-button
                   style="width: 120px"
                   type="danger"
                   @click="makeShortUrl"
                   :loading="loading"
                   :disabled="customSubUrl.length === 0"
-                >Generate short</el-button>
+                >Shorturl</el-button>
                 <!-- <el-button style="width: 120px" type="primary" @click="surgeInstall" icon="el-icon-connection">import Surge</el-button> -->
               </el-form-item>
 
@@ -131,7 +131,7 @@
                   @click="clashInstall"
                   icon="el-icon-connection"
                   :disabled="customSubUrl.length === 0"
-                >import Clash</el-button>
+                >Clash</el-button>
               </el-form-item>
             </el-form>
           </el-container>
