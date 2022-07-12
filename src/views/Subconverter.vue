@@ -208,7 +208,7 @@ export default {
         "scvt.guojun.ml": "https://scvt.guojun.ml/sub?",
         },
         backendOptions: [
-        {value: "http://192.168.99.73:25500/sub?" },
+        {value: "http://192.168.99.73:25500/sub?&expand=false" },
         {value: "http://192.168.99.73:25501/sub?" },
         {value: "https://sub.ops.ci/sub?"},
         {value: "https://api.tsutsu.one/sub?"},
