@@ -63,12 +63,6 @@
                     <el-option v-for="(v, k) in options.customBackend" :key="k" :label="k" :value="v"></el-option>
                   </el-select>
                 </el-form-item>
-                <el-form-item label="Include:">
-                  <el-input v-model="form.includeRemarks" placeholder="include" />
-                </el-form-item>
-                <el-form-item label="Exclude:">
-                  <el-input v-model="form.excludeRemarks" placeholder="exclude" />
-                </el-form-item>
               </div>
 
               <div style="margin-top: 50px"></div>
