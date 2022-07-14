@@ -171,7 +171,6 @@
 </template>
 
 <script>
-<iframe src="https://ip.skk.moe/simple" style="width: 100%; border: 0"></iframe>
 const project = process.env.VUE_APP_PROJECT
 const remoteConfigSample = process.env.VUE_APP_SUBCONVERTER_REMOTE_CONFIG
 const gayhubRelease = process.env.VUE_APP_BACKEND_RELEASE
