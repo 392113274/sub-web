@@ -214,6 +214,10 @@ export default {
             label: "subscribe",
             options: [
               {
+                label: "Router",
+                value: "config/Router.ini"
+              },
+              {
                 label: "G2",
                 value: "config/G2.ini"
               },
