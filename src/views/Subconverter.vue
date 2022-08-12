@@ -214,8 +214,8 @@ export default {
             label: "subscribe",
             options: [
               {
-                label: "Router",
-                value: "config/Router.ini"
+                label: "ACL4SSR-9",
+                value: "https://cdn.staticaly.com/gh/392113274/ACL4SSR/master/Clash/config/ACL4SSR_Online9.ini"
               },
               {
                 label: "G2",
