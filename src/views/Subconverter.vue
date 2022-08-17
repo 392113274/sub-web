@@ -220,34 +220,6 @@ export default {
               {
                 label: "G2",
                 value: "config/G2.ini"
-              },
-              {
-                label: "G3",
-                value: "config/G3.ini"
-              },
-              {
-                label: "G4",
-                value: "config/G4.ini"
-              },
-              {
-                label: "G5",
-                value: "config/G5.ini"
-              },
-              {
-                label: "G6",
-                value: "config/G6.ini"
-              },
-              {
-                label: "G7",
-                value: "config/G7.ini"
-              },
-              {
-                label: "G8",
-                value: "config/G8.ini"
-              },
-              {
-                label: "G9",
-                value: "config/G9.ini"
               }
             ]
         },
