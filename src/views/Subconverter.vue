@@ -214,8 +214,8 @@ export default {
             label: "subscribe",
             options: [
               {
-                label: "ACL4SSR-9",
-                value: "https://cdn.staticaly.com/gh/392113274/ACL4SSR/master/Clash/config/ACL4SSR_Online9.ini"
+                label: "10",
+                value: "https://cdn.staticaly.com/gh/392113274/ACL4SSR/master/Clash/config/ACL4SSR_Online10.ini"
               },
               {
                 label: "G2",
