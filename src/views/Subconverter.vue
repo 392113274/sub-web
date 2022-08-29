@@ -195,7 +195,7 @@ export default {
         },
         customBackend: {
         "local": "http://192.168.99.73:25500/sub?",
-        "remote": "http://192.168.99.73:25501/sub?",
+        "remote": "http://192.168.99.10:25500/sub?",
         "sub.ops.ci": "https://sub.ops.ci/sub?",
         "api.tsutsu.one": "https://api.tsutsu.one/sub?",
         "sub.zua426.gq": "https://sub.zua426.gq/sub?",
